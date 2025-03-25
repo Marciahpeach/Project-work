@@ -1,0 +1,5 @@
+1. GET request 
+    -> fetch all movies
+    -> filter the list of movies and return/render/display the one that matches the filter/search keyword
+    --> map over the cinemas property to display the cinema locations
+
