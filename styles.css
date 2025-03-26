@@ -5,14 +5,42 @@ body{
     text-align: center;
     color: white;
 }
-#searchbtn{
-    background-color: blueviolet;
+#search-btn,#deletebtn{
+    background-color:rgb(243, 21, 21);
     color: white;
     font-size: 1rem;
     width:100px;
+    border-radius: 10px;
+    box-shadow:2px solid rgb(255, 141, 128);
 }
+#search-btn:hover,#deletebtn:hover{
+    background-color:cornflowerblue ;
+    transform:1.5em;
+    width:120px;
+}
+
 #search-input{
-    width: 500px;
+    width: 600px;
+    height: 30px;
     font-size: 1rem;
     margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: rgb(200, 207, 207);
+}
+#movie-search{
+    margin-top: 20px;
+}
+section{
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+}
+section img{
+    width: 300px;
+   transition: 250ms all;
+}
+img:hover{
+    margin-left: 0 40px;
+    transform: scale(1.2);
+    cursor: pointer;
 }

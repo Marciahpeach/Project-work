@@ -9,7 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function movieSection(movies) {
     return movies.map((movie) => {
-      return `<img src =${imageUrl + movie.poster_path} data-movie-id=${movie.id}/>`
+      if (movie.poster_path) {
+        return `<img src =${imageUrl + movie.poster_path} data-movie-id=${movie.id}/>`
+      }
+
     })
   }
 
@@ -29,25 +32,34 @@ document.addEventListener('DOMContentLoaded', () => {
     return movieElement;
   }
 
+  function renderSearchMovies(data){
+    movieSearchable.innerHTML='';
+    const movies = data.results;
+    const movieBlock = createMovieContainer(movies);
+    movieSearchable.appendChild(movieBlock);
+    console.log('Data', data);
+  }
 
-  searchbtn.onclick=function(event){
+
+
+
+
+
+
+  searchbtn.onclick = function (event) {
     event.preventDefault();
-    const value=inputElement.value;
+    const value = inputElement.value;
 
-    const newUrl=movieUrl+ "&query=" +value;
+    const newUrl = movieUrl + "&query=" + value;
 
     fetch(newUrl)
-    .then((res) =>res.json())
-    .then((data) =>{
-      const movies=data.results;
-      const movieBlock=createMovieContainer(movies);
-      movieSearchable.appendChild(movieBlock);
-      console.log('Data',data);
-    })
-    .catch((error) =>{
-      console.log("Error", error);
-    })
-    console.log('Value',value)
+      .then((res) => res.json())
+      .then(renderSearchMovies)
+      .catch((error) => {
+        console.log("Error", error);
+      })
+    console.log('Value', value)
+    inputElement.value=''
   }
 
 })
