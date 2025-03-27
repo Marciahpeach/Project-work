@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const apiKey = "cfdfd510ab2d960857f9947e9d4df55c"
-  const movieUrl = "https://api.themoviedb.org/3/search/movie?api_key=cfdfd510ab2d960857f9947e9d4df55c"
+   const movieUrl = "https://api.themoviedb.org/3/search/movie?api_key=cfdfd510ab2d960857f9947e9d4df55c"
   const imageUrl = "https://image.tmdb.org/t/p/w500"
   const movieSearchable = document.querySelector('#movie-search')
   const searchbtn = document.querySelector('#search-btn')
@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const remove=document.getElementById('deletebtn') 
 
 function generateUrl(path){
-  const url=`https://api.themoviedb.org/3${path}?api_key=cfdfd510ab2d960857f9947e9d4df55c`
+  const url=`https://api.themoviedb.org/3${path}?api_key=cfdfd510ab2d960857f9947e9d4df55c`;
+  
 return url;
 }
 
@@ -106,19 +107,18 @@ document.onclick = function(event){
     .then((res) => res.json())
     .then((data)=>{
       console.log('Videos:', data)
-      console.log('Videos', data)
+
       const videos=data.result;
       const length=videos.length > 4 ? 4: videos.length;
-      const iframeContainer=document.createElement('div')
+      const iframeContainer=document.createElement('div');
   
       for(let i=0; i < length; i++){
-        const video=videos(i)
+        const video=videos[i];
         const iframe=createIframe(video);
         iframeContainer.appendChild(iframe);
         content.appendChild(iframeContainer);
   
       }
-      // createVideoTemplate(data,content)
     })
     .catch((error) => {
       console.log("Error", error);
