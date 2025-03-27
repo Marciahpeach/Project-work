@@ -44,3 +44,26 @@ img:hover{
     transform: scale(1.2);
     cursor: pointer;
 }
+
+.content{
+    border: 1px sold red;
+    display: none;
+}
+.content div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin:10px ;
+    flex-wrap: wrap;
+}
+.content-display{
+    display: block;
+}
+
+
+
+
+
+
+
+
