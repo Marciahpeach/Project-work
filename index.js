@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function generateUrl(path){
   const url=`https://api.themoviedb.org/3${path}?api_key=cfdfd510ab2d960857f9947e9d4df55c`
-return url
+return url;
 }
-
+https://api.themoviedb.org/3/tv/{series_id}/season/{season_number}/episode/{episode_number}/videos
   function movieSection(movies) {
     return movies.map((movie) => {
       if (movie.poster_path) {
@@ -77,25 +77,25 @@ return url
     content.innerHTML='<p id="content-close">X</p>';
     console.log('Videos', data)
     const videos=data.result;
-    const length=videos.length > 4 ? 4:videos.length;
+    const length=videos.length > 4 ? 4: videos.length;
     const iframeContainer=document.createElement('div')
 
-    for(let i=0; i< length; i++){
+    for(let i=0; i < length; i++){
       const video=videos[i]
-      const iframe=createIframe(video)
-      iframeContainer.appendChild(iframe)
-      content.appendChild(iframeContainer)
+      const iframe=createIframe(video);
+      iframeContainer.appendChild(iframe);
+      content.appendChild(iframeContainer);
 
     }
   }
 
-document.onclick =function(event){
+document.onclick = function(event){
   const target =event.target;
 
-  if(target.tagname.toLowerCase() === 'img'){
-    const movieId=target.datasey.movieId;
-    console.log('Hello World');
+  if(target.tagName.toLowerCase() === 'img'){
     console.log('Event:', event)
+    const movieId=target.dataset.movieId;
+    console.log('Movie ID:', movieId);
     const section =event.target.parentElement;
     const content=section.nextElementSibling;
     content.classList.add('content-display')
@@ -105,12 +105,12 @@ document.onclick =function(event){
     fetch(url)
     .then((res) => res.json())
     .then((data)=>{
+      console.log('Videos:', data)
       createVideoTemplate(data,content)
     })
     .catch((error) => {
       console.log("Error", error);
     })
-
 
   }
 
@@ -120,18 +120,6 @@ document.onclick =function(event){
   }
 
 }
-
-
-
-
-    
-
-
-
-  
-
-
-
 
 
 

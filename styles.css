@@ -12,6 +12,7 @@ body{
     width:100px;
     border-radius: 10px;
     box-shadow:2px solid rgb(255, 141, 128);
+   
 }
 #search-btn:hover,#deletebtn:hover{
     background-color:cornflowerblue ;
@@ -46,7 +47,8 @@ img:hover{
 }
 
 .content{
-    border: 1px sold red;
+    border: 1px solid red;
+    height: 400px;
     display: none;
 }
 .content div{
@@ -58,6 +60,7 @@ img:hover{
 }
 .content-display{
     display: block;
+
 }
 
 
