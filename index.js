@@ -11,7 +11,7 @@ function generateUrl(path){
   const url=`https://api.themoviedb.org/3${path}?api_key=cfdfd510ab2d960857f9947e9d4df55c`
 return url;
 }
-https://api.themoviedb.org/3/tv/{series_id}/season/{season_number}/episode/{episode_number}/videos
+
   function movieSection(movies) {
     return movies.map((movie) => {
       if (movie.poster_path) {
@@ -73,21 +73,21 @@ https://api.themoviedb.org/3/tv/{series_id}/season/{season_number}/episode/{epis
 
   }
 
-  function createVideoTemplate(data,content){
-    content.innerHTML='<p id="content-close">X</p>';
-    console.log('Videos', data)
-    const videos=data.result;
-    const length=videos.length > 4 ? 4: videos.length;
-    const iframeContainer=document.createElement('div')
+  // function createVideoTemplate(data,content){
+  //   content.innerHTML='<p id="content-close">X</p>';
+  //   console.log('Videos', data)
+  //   const videos=data.result;
+  //   const length=videos.length > 4 ? 4: videos.length;
+  //   const iframeContainer=document.createElement('div')
 
-    for(let i=0; i < length; i++){
-      const video=videos[i]
-      const iframe=createIframe(video);
-      iframeContainer.appendChild(iframe);
-      content.appendChild(iframeContainer);
+  //   for(let i=0; i < length; i++){
+  //     const video=videos(i)
+  //     const iframe=createIframe(video);
+  //     iframeContainer.appendChild(iframe);
+  //     content.appendChild(iframeContainer);
 
-    }
-  }
+  //   }
+  // }
 
 document.onclick = function(event){
   const target =event.target;
@@ -106,7 +106,19 @@ document.onclick = function(event){
     .then((res) => res.json())
     .then((data)=>{
       console.log('Videos:', data)
-      createVideoTemplate(data,content)
+      console.log('Videos', data)
+      const videos=data.result;
+      const length=videos.length > 4 ? 4: videos.length;
+      const iframeContainer=document.createElement('div')
+  
+      for(let i=0; i < length; i++){
+        const video=videos(i)
+        const iframe=createIframe(video);
+        iframeContainer.appendChild(iframe);
+        content.appendChild(iframeContainer);
+  
+      }
+      // createVideoTemplate(data,content)
     })
     .catch((error) => {
       console.log("Error", error);
